@@ -2,12 +2,10 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import os
-import numpy as np
 from random_user_agent.user_agent import UserAgent
 from random_user_agent.params import SoftwareName, OperatingSystem
 from pandasql import sqldf
 from urllib.request import Request, urlopen
-import re
 
 os.chdir(r"C:\Users\aaron\OneDrive\Documents\Meta Challenge")
 df = pd.read_csv(r"C:\Users\aaron\OneDrive\Documents\Meta Challenge\out.csv")

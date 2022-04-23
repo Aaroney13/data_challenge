@@ -5,16 +5,13 @@ import os
 os.chdir(r"C:\Users\aaron\OneDrive\Documents\Meta Challenge")
 
 df = pd.read_csv(r"C:\Users\aaron\OneDrive\Documents\Meta Challenge\NetflixData\netflix_titles.csv")
-rt = pd.read_csv(r"C:\Users\aaron\OneDrive\Documents\Meta Challenge\rotten_tomatoes_movies.csv")
+webscrape = pd.read_csv(r"C:\Users\aaron\OneDrive\Documents\Meta Challenge\my_movies.csv")
+webscrape = webscrape.drop(columns='check')
 
 pysqldf = lambda q: sqldf(q, globals())
 
 Canada = pysqldf("SELECT * FROM df WHERE country LIKE '%Canada%' ")
 
-#Experimenting with Google Ads
-#Canada_Movies = Canada['title']
-# Canada_Movies.to_csv(os.getcwd() + '/out.csv', index=False)
+new = Canada.merge(webscrape, how='inner', left_on='title', right_on='title')
 
-new = Canada.merge(rt, how='inner', left_on='title', right_on='movie_title')
-print(Canada)
-print(new)
+
