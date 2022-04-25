@@ -36,9 +36,6 @@ for x in test_title:
                 links = link.get('href')
                 print("link got for" + title)
                 break
-    #   try:
-    #       if (links == None):
-    #          print("link not found for" + title)
         links = links[(links.find('e/') + 1):links.rfind('/')]
         open = requests.get('https://www.imdb.com/title' + links + '/', headers={"User-Agent": custom_user_agent})
         soup = BeautifulSoup(open.content, 'html.parser')
